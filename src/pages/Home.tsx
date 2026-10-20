@@ -4,10 +4,10 @@ import youthToJesusLogo from "../assets/youth-to-jesus-logo-cream.png";
 import { useLang } from "../LangContext";
 import { t } from "../i18n";
 import ourLife1 from "../assets/life/1.jpg";
-import ourLife2 from "../assets/life/3.JPG";
-import ourLife3 from "../assets/life/2.JPG";
+import ourLife2 from "../assets/life/3.jpg";
+import ourLife3 from "../assets/life/2.jpg";
 import ourLife4 from "../assets/life/4.jpg";
-import ourLife5 from "../assets/life/5.JPG";
+import ourLife5 from "../assets/life/5.jpg";
 import hero from "../assets/church/main.jpg";
 
 const photos = {
