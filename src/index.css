@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=HK+Grotesk:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #f6f1eb;
+  --color-dark: #2e1818;
+  --color-green: #1f512a;
+  --color-orange: #eb5e28;
+  --color-yellow: #f4b917;
+  --color-blue: #6ea7cb;
+  --color-card: #ede8e1;
+  --font-display: 'PT Serif', 'Georgia', serif;
+  --font-body: 'HK Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f1eb;
+  color: #2e1818;
+  font-family: 'HK Grotesk', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'PT Serif', 'Georgia', serif;
+}
+
+.font-body {
+  font-family: 'HK Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* Hide scrollbar by default */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(46, 24, 24, 0.2);
+  border-radius: 3px;
+}
+
+/* Page transition */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.page-enter {
+  animation: page-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.page-exit {
+  animation: page-out 0.25s cubic-bezier(0.55, 0, 1, 0.45) both;
+  pointer-events: none;
+}
+
+/* Photo grid animation */
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: float-up 0.6s ease forwards;
+}
+
+/* Keeps the hero transition soft while the video starts loading. */
+@keyframes hero-video-in {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-video {
+  animation: hero-video-in 1.2s ease-out both;
+  filter: brightness(0.78);
+}
+
+@keyframes hero-brand-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+.hero-brand-logo {
+  animation: hero-brand-in 0.9s ease-out 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-brand-logo {
+    animation: none;
+    opacity: 0.9;
+  }
+}
+
+/* Masonry grid */
+.masonry {
+  columns: 3;
+  column-gap: 12px;
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry {
+    columns: 1;
+  }
+}

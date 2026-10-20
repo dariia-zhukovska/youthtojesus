@@ -1,0 +1,10 @@
+{
+  "description": "Connect with a vibrant interdenominational youth community focused on faith, authentic friendships, and spiritual growth through engaging content and events.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
