@@ -273,14 +273,14 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to={`/${lang}/contact`}
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:opacity-90 active:scale-95"
                 style={{ backgroundColor: "#eb5e28", color: "white" }}
               >
                 {tx.hero_cta1} <span>→</span>
               </Link>
               <Link
-                to="/mission"
+                to={`/${lang}/mission`}
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm border transition-all hover:bg-black/5"
                 style={{ borderColor: "#2e1818", color: "#2e1818" }}
               >
@@ -319,7 +319,7 @@ export default function Home() {
                 {tx.who_desc}
               </p>
               <Link
-                to="/about"
+                to={`/${lang}/about`}
                 className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all"
                 style={{ color: "#eb5e28" }}
               >
@@ -421,7 +421,7 @@ export default function Home() {
                   </div>
 
                   <Link
-                    to={`/community/${activity.slug}`}
+                    to={`/${lang}/community/${activity.slug}`}
                     className="mt-auto flex items-center gap-2 border-t border-dark/10 pt-5 text-sm font-semibold text-green transition-all hover:gap-3"
                   >
                     {tx.read_more}
@@ -436,7 +436,7 @@ export default function Home() {
 
           <div className="mt-9 text-center">
             <Link
-              to="/community"
+              to={`/${lang}/community`}
               className="inline-flex items-center gap-2 rounded-full border border-dark px-7 py-3.5 text-sm font-semibold text-dark transition-all hover:gap-3 hover:bg-dark hover:text-bg"
             >
               {tx.what_all} →
@@ -468,7 +468,7 @@ export default function Home() {
               </h2>
             </div>
             <Link
-              to="/community"
+              to={`/${lang}/community`}
               className="text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all"
               style={{ color: "#eb5e28" }}
             >
@@ -518,7 +518,7 @@ export default function Home() {
             {tx.quote_sub}
           </p>
           <Link
-            to="/mission"
+            to={`/${lang}/mission`}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all hover:opacity-90"
             style={{ backgroundColor: "#f4b917", color: "#2e1818" }}
           >
@@ -548,7 +548,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              to="/donate"
+              to={`/${lang}/donate`}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:opacity-90"
               style={{ backgroundColor: "#eb5e28", color: "white" }}
             >

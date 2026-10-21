@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router";
 import youthToJesusLogo from "../assets/youth-to-jesus-logo-cream.png";
 import { useLang } from "../LangContext";
@@ -13,34 +13,41 @@ export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const withLang = (path: string) => `/${lang}${path === "/" ? "" : path}`;
+
+  const homePath = withLang("/");
+  const contactPath = withLang("/contact");
+  const currentPath = location.pathname.replace(/\/+$/, "") || "/";
+
   const navLinks = [
-    { to: "/", label: tx.nav_home },
-    { to: "/about", label: tx.nav_about },
-    { to: "/community", label: tx.nav_life },
-    { to: "/mission", label: tx.nav_mission },
-    { to: "/church", label: tx.nav_church },
-    { to: "/donate", label: tx.nav_donate },
-    { to: "/contact", label: tx.nav_contact },
+    { to: homePath, label: tx.nav_home },
+    { to: withLang("/about"), label: tx.nav_about },
+    { to: withLang("/community"), label: tx.nav_life },
+    { to: withLang("/mission"), label: tx.nav_mission },
+    { to: withLang("/church"), label: tx.nav_church },
+    { to: withLang("/donate"), label: tx.nav_donate },
+    { to: contactPath, label: tx.nav_contact },
   ];
 
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-medium transition-opacity ${
-      isActive ? "opacity-100 border-b-2" : "opacity-60 hover:opacity-100"
-    }`;
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname, location.search, location.hash]);
 
   return (
     <div
       style={{ backgroundColor: "#f6f1eb", color: "#2e1818" }}
       className="font-body min-h-screen overflow-x-hidden pt-[65px]"
     >
-      {/* ── NAV ── */}
+      {/* NAV */}
       <nav
         style={{ backgroundColor: "#f6f1eb" }}
         className="fixed inset-x-0 top-0 z-50 border-b border-black/8"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <NavLink
-            to="/"
+            to={homePath}
+            end
+            onClick={() => setMenuOpen(false)}
             className="font-display text-xl font-bold tracking-tight"
             style={{ color: "#2e1818" }}
           >
@@ -53,7 +60,7 @@ export default function Layout() {
               <NavLink
                 key={link.to}
                 to={link.to}
-                end={link.to === "/"}
+                end={link.to === homePath}
                 className={({ isActive }) =>
                   `text-sm font-medium transition-opacity pb-0.5 ${
                     isActive
@@ -69,7 +76,7 @@ export default function Layout() {
           </div>
 
           <div className="hidden xl:flex items-center gap-3">
-            {/* Lang switcher */}
+            {/* Language switcher */}
             <div
               className="flex items-center gap-1 p-1 rounded-full"
               style={{ backgroundColor: "rgba(46,24,24,0.08)" }}
@@ -77,7 +84,9 @@ export default function Layout() {
               {(["uk", "en"] as const).map((l) => (
                 <button
                   key={l}
+                  type="button"
                   onClick={() => setLang(l)}
+                  aria-pressed={lang === l}
                   className="px-3 py-1 rounded-full text-xs font-bold transition-all"
                   style={{
                     backgroundColor: lang === l ? "#1f512a" : "transparent",
@@ -88,8 +97,10 @@ export default function Layout() {
                 </button>
               ))}
             </div>
+
             <button
-              onClick={() => navigate("/contact")}
+              type="button"
+              onClick={() => navigate(contactPath)}
               className="text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:opacity-90 active:scale-95"
               style={{ backgroundColor: "#eb5e28", color: "white" }}
             >
@@ -99,9 +110,12 @@ export default function Layout() {
 
           {/* Mobile hamburger */}
           <button
+            type="button"
             className="mr-2 p-2 xl:hidden"
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Menu"
+            aria-label={lang === "uk" ? "Меню" : "Menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span
               className="block w-5 h-0.5 bg-current mb-1.5 transition-all origin-center"
@@ -109,10 +123,12 @@ export default function Layout() {
                 transform: menuOpen ? "rotate(45deg) translateY(6px)" : "",
               }}
             />
+
             <span
               className="block w-5 h-0.5 bg-current mb-1.5 transition-all"
               style={{ opacity: menuOpen ? 0 : 1 }}
             />
+
             <span
               className="block w-5 h-0.5 bg-current transition-all origin-center"
               style={{
@@ -124,6 +140,8 @@ export default function Layout() {
 
         {/* Mobile menu */}
         <div
+          id="mobile-menu"
+          inert={!menuOpen}
           className={`xl:hidden border-t border-black/8 overflow-hidden transition-all duration-300 ${
             menuOpen ? "max-h-[32rem]" : "max-h-0"
           }`}
@@ -134,7 +152,7 @@ export default function Layout() {
               <NavLink
                 key={link.to}
                 to={link.to}
-                end={link.to === "/"}
+                end={link.to === homePath}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
                   `text-base font-medium py-1 border-l-2 pl-3 transition-all ${
@@ -148,14 +166,17 @@ export default function Layout() {
                 {link.label}
               </NavLink>
             ))}
+
             <div className="flex items-center gap-2 pt-2">
               {(["uk", "en"] as const).map((l) => (
                 <button
                   key={l}
+                  type="button"
                   onClick={() => {
                     setLang(l);
                     setMenuOpen(false);
                   }}
+                  aria-pressed={lang === l}
                   className="px-3 py-1.5 rounded text-xs font-bold border transition-all"
                   style={{
                     backgroundColor: lang === l ? "#1f512a" : "transparent",
@@ -167,8 +188,9 @@ export default function Layout() {
                 </button>
               ))}
             </div>
+
             <NavLink
-              to="/contact"
+              to={contactPath}
               onClick={() => setMenuOpen(false)}
               className="text-sm font-semibold px-5 py-3 rounded-full text-center mt-2"
               style={{ backgroundColor: "#eb5e28", color: "white" }}
@@ -179,21 +201,23 @@ export default function Layout() {
         </div>
       </nav>
 
-      {/* ── PAGE CONTENT ── */}
+      {/* PAGE CONTENT */}
       <PageTransition>
         <Outlet />
       </PageTransition>
 
-      {location.pathname !== "/contact" && (
-        <StayConnected compact={location.pathname !== "/"} />
+      {currentPath !== contactPath && (
+        <StayConnected compact={currentPath !== homePath} />
       )}
 
-      {/* ── FOOTER ── */}
+      {/* FOOTER */}
       <footer className="relative overflow-hidden bg-dark text-bg">
         <img
           src={youthToJesusLogo}
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           className="pointer-events-none absolute right-4 bottom-40 w-32 max-w-none opacity-[.17] md:right-6 md:bottom-30 md:w-60"
         />
 
@@ -201,16 +225,19 @@ export default function Layout() {
           <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-[1.25fr_.75fr_.75fr_.6fr]">
             <div>
               <NavLink
-                to="/"
+                to={homePath}
+                end
                 className="inline-flex font-display text-3xl font-bold tracking-tight text-white"
               >
                 МдІ<span className="text-orange">.</span>
               </NavLink>
+
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/55">
                 {tx.footer_tagline}
               </p>
+
               <NavLink
-                to="/community/bible-study"
+                to={withLang("/community/bible-study")}
                 className="mt-7 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs text-white/65 transition-colors hover:bg-white/[0.08] hover:text-white"
               >
                 <span className="h-2 w-2 animate-pulse rounded-full bg-yellow" />
@@ -222,11 +249,13 @@ export default function Layout() {
               <div className="mb-5 text-xs font-bold uppercase tracking-widest text-white/35">
                 {tx.footer_links}
               </div>
+
               <div className="flex flex-col items-start gap-3">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.to}
                     to={link.to}
+                    end={link.to === homePath}
                     className="text-sm text-white/60 transition-all hover:translate-x-1 hover:text-white"
                   >
                     {link.label}
@@ -239,15 +268,17 @@ export default function Layout() {
               <div className="mb-5 text-xs font-bold uppercase tracking-widest text-white/35">
                 {tx.footer_more}
               </div>
+
               <div className="flex flex-col items-start gap-3">
                 <NavLink
-                  to="/church"
+                  to={withLang("/church")}
                   className="text-sm text-white/60 transition-all hover:translate-x-1 hover:text-white"
                 >
                   {tx.nav_church}
                 </NavLink>
+
                 <NavLink
-                  to="/community/bible-study"
+                  to={withLang("/community/bible-study")}
                   className="text-sm text-white/60 transition-all hover:translate-x-1 hover:text-white"
                 >
                   {tx.act1_title}
@@ -259,11 +290,14 @@ export default function Layout() {
               <div className="mb-5 text-xs font-bold uppercase tracking-widest text-white/35">
                 {tx.footer_lang}
               </div>
+
               <div className="flex flex-col items-start gap-2">
                 {(["uk", "en"] as const).map((l) => (
                   <button
                     key={l}
+                    type="button"
                     onClick={() => setLang(l)}
+                    aria-pressed={lang === l}
                     className={`rounded-full px-3 py-1.5 text-left text-xs font-semibold transition-colors ${
                       lang === l
                         ? "bg-orange text-white"
@@ -281,6 +315,7 @@ export default function Layout() {
             <p className="text-xs text-white/35">
               © {new Date().getFullYear()} {tx.footer_rights}
             </p>
+
             <div className="flex flex-wrap gap-2">
               {[
                 {
@@ -300,7 +335,7 @@ export default function Layout() {
                   key={social.label}
                   href={social.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/45 transition-colors hover:border-white/25 hover:text-white"
                 >
                   {social.label}

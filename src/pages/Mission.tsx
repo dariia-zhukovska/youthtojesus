@@ -69,13 +69,13 @@ export default function Mission() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to={`/${lang}/contact`}
                 className="inline-flex items-center gap-2 rounded-full bg-orange px-7 py-3.5 text-sm font-semibold text-white transition-all hover:gap-3 hover:opacity-90"
               >
                 {lang === "uk" ? "Приєднатись" : "Join us"} →
               </Link>
               <Link
-                to="/about"
+                to={`/${lang}/about`}
                 className="rounded-full border border-dark px-7 py-3.5 text-sm font-semibold text-dark transition-colors hover:bg-dark hover:text-bg"
               >
                 {lang === "uk" ? "Наша історія" : "Our story"}
@@ -199,13 +199,13 @@ export default function Mission() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              to="/contact"
+              to={`/${lang}/contact`}
               className="rounded-full bg-dark px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               {lang === "uk" ? "Приєднатись" : "Join us"} →
             </Link>
             <Link
-              to="/donate"
+              to={`/${lang}/donate`}
               className="rounded-full border border-dark px-7 py-3.5 text-sm font-semibold text-dark transition-colors hover:bg-dark hover:text-white"
             >
               {lang === "uk" ? "Підтримати" : "Support us"}

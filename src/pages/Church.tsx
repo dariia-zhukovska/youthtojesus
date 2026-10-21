@@ -2,10 +2,10 @@ import { Link } from "react-router";
 import churchLogo from "../assets/st-john-church-logo-original.png";
 import { useLang } from "../LangContext";
 import { t } from "../i18n";
-import churchMain from "../assets/church/church-main-01.png";
-import volunteer from "../assets/church/volunteering.jpg";
-import youth from "../assets/church/youth.jpg";
-import wesley from "../assets/church/wesley.png";
+import churchMain from "../assets/church/church-main-01.webp";
+import volunteer from "../assets/church/volunteering.webp";
+import youth from "../assets/church/youth.webp";
+import wesley from "../assets/church/wesley.webp";
 const worshipVideo = `${import.meta.env.BASE_URL}videos/sermon-church.mp4`;
 
 const churchPhotos = {
@@ -325,7 +325,7 @@ export default function Church() {
               <div className="mb-8 h-px w-full bg-white/20" />
               <div className="flex flex-col items-start gap-5">
                 <Link
-                  to="/community"
+                  to={`/${lang}/community`}
                   className="group inline-flex items-center gap-3 text-sm font-bold text-yellow"
                 >
                   {tx.church_youth_link}
@@ -337,7 +337,7 @@ export default function Church() {
                   </span>
                 </Link>
                 <Link
-                  to="/contact"
+                  to={`/${lang}/contact`}
                   className="group inline-flex items-center gap-3 text-sm font-bold text-white"
                 >
                   {tx.church_contact_link}

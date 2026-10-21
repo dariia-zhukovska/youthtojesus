@@ -3,16 +3,16 @@ import { Link } from "react-router";
 import { useLang } from "../LangContext";
 import { t } from "../i18n";
 
-import start01 from "../assets/about/01.png";
-import start02 from "../assets/about/02.png";
-import start03 from "../assets/about/03.png";
-import start04 from "../assets/about/04.png";
+import start01 from "../assets/about/01.webp";
+import start02 from "../assets/about/02.webp";
+import start03 from "../assets/about/03.webp";
+import start04 from "../assets/about/04.webp";
 
-import piligrims05 from "../assets/about/05.jpg";
-import piligrims06 from "../assets/about/06.jpg";
-import piligrims07 from "../assets/about/07.jpg";
-import piligrims08 from "../assets/about/08.jpg";
-import piligrims09 from "../assets/about/09.jpg";
+import piligrims05 from "../assets/about/05.webp";
+import piligrims06 from "../assets/about/06.webp";
+import piligrims07 from "../assets/about/07.webp";
+import piligrims08 from "../assets/about/08.webp";
+import piligrims09 from "../assets/about/09.webp";
 
 const beginningPhotos = [start01, start02, start03, start04];
 const piligrimsPhotos = [
@@ -448,14 +448,14 @@ export default function About() {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
-              to="/contact"
+              to={`/${lang}/contact`}
               className="rounded-full bg-dark px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               {tx.nav_join} →
             </Link>
 
             <Link
-              to="/community"
+              to={`/${lang}/community`}
               className="rounded-full border border-white/50 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-orange"
             >
               {tx.nav_life}
