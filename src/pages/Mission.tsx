@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { useLang } from "../LangContext";
 import { t } from "../i18n";
-import missionPic from "../assets/mission/000068100024.jpg";
+import missionPic from "../assets/mission/000068100024.webp";
 
 const missionPhoto = missionPic;
 

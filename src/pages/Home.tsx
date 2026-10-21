@@ -3,12 +3,12 @@ import { Link } from "react-router";
 import youthToJesusLogo from "../assets/youth-to-jesus-logo-cream.png";
 import { useLang } from "../LangContext";
 import { t } from "../i18n";
-import ourLife1 from "../assets/life/1.jpg";
-import ourLife2 from "../assets/life/3.jpg";
-import ourLife3 from "../assets/life/2.jpg";
-import ourLife4 from "../assets/life/4.jpg";
-import ourLife5 from "../assets/life/5.jpg";
-import hero from "../assets/church/main.jpg";
+import ourLife1 from "../assets/life/1.webp";
+import ourLife2 from "../assets/life/3.webp";
+import ourLife3 from "../assets/life/2.webp";
+import ourLife4 from "../assets/life/4.webp";
+import ourLife5 from "../assets/life/5.webp";
+import hero from "../assets/church/main.webp";
 
 const photos = {
   hero: hero,
