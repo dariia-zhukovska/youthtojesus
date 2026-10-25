@@ -5,15 +5,13 @@ import { useLang } from "../LangContext";
 import { t } from "../i18n";
 import ourLife1 from "../assets/life/1.webp";
 import ourLife2 from "../assets/life/3.webp";
-import ourLife3 from "../assets/life/2.webp";
 import ourLife4 from "../assets/life/4.webp";
-import ourLife5 from "../assets/life/5.webp";
 import hero from "../assets/church/main.webp";
 
 const photos = {
   hero: hero,
   who: "https://images.unsplash.com/photo-1516149893016-813d9a01d5d3?w=800&h=600&fit=crop&auto=format",
-  gallery: [ourLife1, ourLife2, ourLife3, ourLife4, ourLife5],
+  gallery: [ourLife1, ourLife2, ourLife4],
 };
 
 // Replace this URL with your own hosted hero video when it is ready.

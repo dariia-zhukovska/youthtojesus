@@ -6,6 +6,7 @@ import churchMain from "../assets/church/church-main-01.webp";
 import volunteer from "../assets/church/volunteering.webp";
 import youth from "../assets/church/youth.webp";
 import wesley from "../assets/church/wesley.webp";
+import commuityPic from "../assets/church/comm.jpg";
 const worshipVideo = `${import.meta.env.BASE_URL}videos/sermon-church.mp4`;
 
 const churchPhotos = {
@@ -14,8 +15,7 @@ const churchPhotos = {
   youth: youth,
   volunteer: volunteer,
   sermons: wesley,
-  community:
-    "https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?w=1600&h=1100&fit=crop&auto=format",
+  community: commuityPic,
 };
 
 export default function Church() {
