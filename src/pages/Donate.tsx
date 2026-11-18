@@ -10,20 +10,20 @@ export default function Donate() {
     lang === "uk"
       ? [
           "Регулярні молодіжні зустрічі",
+          "Розвиток молодіжного лідерства",
           "Гірські поїздки та ретрити",
           "Активності для побудови спільноти",
           "Євангелізаційні проєкти",
-          "Розвиток молодіжного лідерства",
           "Часткова підтримка навчання",
           "Волонтерські та соціальні ініціативи",
           "Служіння гостинності й безпечні простори для молоді",
         ]
       : [
           "Regular youth gatherings",
+          "Youth leadership development",
           "Mountain trips and retreats",
           "Community-building activities",
           "Evangelism projects",
-          "Youth leadership development",
           "Partial educational support",
           "Volunteer and social initiatives",
           "Hospitality ministry and safe spaces for young people",
