@@ -80,7 +80,7 @@ export default function Donate() {
 
               <div className="space-y-4">
                 <a
-                  href="https://gbhem-umc.my.site.com/hemgm/s/campaign/a3fPo000000D42v/university-student-ministries-youth-to-jesus"
+                  href="https://gbhem-umc.my.site.com/s/donor/campaign/a3fPo000000D42v/university-student-ministries-youth-to-jesus"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-5 p-7 rounded-2xl border-2 hover:-translate-y-1 transition-all duration-200 group"

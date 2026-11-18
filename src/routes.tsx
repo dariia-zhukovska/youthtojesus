@@ -77,7 +77,6 @@ function createPages(): RouteObject[] {
     { path: "donate", Component: Donate },
     { path: "contact", Component: Contact },
 
-    // /en/ggff або /uk/ggff потрапляють сюди.
     { path: "*", Component: NotFound },
   ];
 }
